@@ -1,0 +1,12 @@
+# Dépendances et artefacts de build
+node_modules/
+dist/
+
+# Outils locaux (GitHub CLI portable, etc.)
+.tools/
+
+# Divers
+.DS_Store
+Thumbs.db
+*.local
+npm-debug.log*
