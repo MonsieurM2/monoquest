@@ -14,7 +14,8 @@ MonoGame, revisité en 20 chapitres avec quiz et exercices.
 - **Un guide C#** pour les prérequis du langage.
 - **Un quiz final de 20 questions** et une page de ressources.
 - Progression, scores et chapitre en cours sauvegardés dans le navigateur.
-- Recherche plein cours (`Ctrl`/`Cmd` + `K`), thème sombre, responsive.
+- Recherche plein cours (`Ctrl`/`Cmd` + `K`), thème clair papier et émeraude, responsive.
+- En ligne : [monsieurm2.github.io/monoquest](https://monsieurm2.github.io/monoquest/).
 
 Le code C# des chapitres reprend celui du dépôt officiel
 [`MonoGame/MonoGame-Samples`](https://github.com/MonoGame/MonoGame-Samples)
@@ -24,7 +25,7 @@ explications traduits.
 ## Stack
 
 Vite 8 + TypeScript strict, sans framework UI. Le HTML est généré par des
-fonctions de rendu, les styles sont écrits à la main (thème sombre), la
+fonctions de rendu, les styles sont écrits à la main (thème clair), la
 coloration syntaxique vient de `highlight.js`.
 
 ## Développement

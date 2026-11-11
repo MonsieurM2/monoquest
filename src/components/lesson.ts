@@ -145,7 +145,8 @@ export function renderLesson(lesson: Lesson): string {
     ...(lesson.exercises.length ? [{ id: 'exercices', text: 'Exercices' }] : []),
   ];
 
-  return `<div class="lesson-layout">
+  return `<div class="reading-progress" data-reading-progress aria-hidden="true"><span></span></div>
+  <div class="lesson-layout">
     <button class="rail-mobile-toggle" type="button" data-rail-toggle aria-expanded="false">
       ${icon('list')} Sommaire du cours
     </button>
@@ -243,6 +244,17 @@ export function setupLesson(lesson: Lesson): () => void {
   const quizRoot = document.querySelector('#quiz');
   if (quizRoot) setupQuiz(quizRoot, lesson.quiz, `lesson-${lesson.slug}`);
 
+  const readingBar = document.querySelector<HTMLElement>('[data-reading-progress] span');
+  const updateReading = (): void => {
+    if (!readingBar) return;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const percent = max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0;
+    readingBar.style.width = `${percent}%`;
+  };
+  window.addEventListener('scroll', updateReading, { passive: true, signal });
+  window.addEventListener('resize', updateReading, { passive: true, signal });
+  updateReading();
+
   const completeButton = document.querySelector<HTMLButtonElement>('[data-complete]');
   const completionCard = document.querySelector<HTMLElement>('[data-completion]');
   const railCount = document.querySelector<HTMLElement>('[data-rail-count]');
@@ -268,6 +280,7 @@ export function setupLesson(lesson: Lesson): () => void {
         ? 'Beau travail. Tu peux passer à la suite, ou relire les passages qui demandent encore un peu de pratique.'
         : 'Coche ce chapitre pour le retrouver dans ta progression. Ton avancement reste dans ce navigateur.';
     }
+    updateReading();
   };
 
   completeButton?.addEventListener(

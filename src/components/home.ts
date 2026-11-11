@@ -14,7 +14,7 @@ function moduleCard(module: (typeof MODULES)[number]): string {
   const items = lessonsByModule(module.id);
   const done = items.filter((lesson) => isComplete(lesson.slug)).length;
 
-  return `<article class="module-card">
+  return `<article class="module-card accent-${module.accent}">
     <div class="module-card-head">
       <span class="module-number">${module.number}</span>
       <span class="module-count">${items.length} chapitre${items.length > 1 ? 's' : ''}</span>
@@ -67,10 +67,13 @@ export function renderHome(): string {
           <p class="hero-eyebrow">
             <span class="status-dot"></span>
             Adaptation française du tutoriel officiel MonoGame
-            <span class="eyebrow-sep">·</span>
-            <span class="mono">3.8.6</span>
+            <span class="eyebrow-version"><span class="eyebrow-sep">·</span><span class="mono">3.8.6</span></span>
           </p>
-          <h1>Apprends le C# en créant <span class="accent-word">ton premier jeu 2D</span>.</h1>
+          <h1>
+            Apprends le C# en créant
+            <span class="accent-word">ton</span> <span class="accent-word">premier</span>
+            <span class="accent-word">jeu 2D</span>.
+          </h1>
           <p class="hero-lead">
             Un parcours guidé, du premier <code>dotnet new</code> jusqu’à un jeu publié.
             Tu construis <strong>Dungeon Slime</strong> pas à pas, avec des quiz pour vérifier

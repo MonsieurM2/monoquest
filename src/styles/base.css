@@ -3,43 +3,46 @@
    ============================================================ */
 
 :root {
-  color-scheme: dark;
-  --bg: #080a0e;
-  --bg-soft: #0b0e13;
-  --surface: #10141b;
-  --surface-2: #151a23;
-  --surface-3: #1b2230;
-  --border: #232b38;
-  --border-strong: #323c4d;
+  color-scheme: light;
+  --bg: #f5f1e8;
+  --bg-soft: #efe9dc;
+  --surface: #fffdf7;
+  --surface-2: #f8f3e8;
+  --surface-3: #ece5d6;
+  --border: #ded5c3;
+  --border-strong: #c8bda6;
 
-  --text: #eef1f6;
-  --text-soft: #c2c9d6;
-  --muted: #8c96a8;
-  --faint: #5d6678;
+  --text: #1a2230;
+  --text-soft: #3b4657;
+  --muted: #616d80;
+  --faint: #8993a2;
 
-  --accent: #ff8a3d;
-  --accent-strong: #ff6b18;
-  --accent-soft: rgba(255, 138, 61, 0.12);
-  --accent-line: rgba(255, 138, 61, 0.35);
-  --lime: #b8f36b;
-  --lime-soft: rgba(184, 243, 107, 0.1);
-  --violet: #b39dff;
-  --violet-soft: rgba(179, 157, 255, 0.1);
-  --rose: #ff9db5;
-  --success: #7ee787;
-  --danger: #ff7373;
+  --accent: #0b6b53;
+  --accent-strong: #085440;
+  --accent-soft: rgba(11, 107, 83, 0.1);
+  --accent-line: rgba(11, 107, 83, 0.34);
+  --lime: #4f7d1f;
+  --lime-soft: rgba(79, 125, 31, 0.11);
+  --violet: #6a5acd;
+  --violet-soft: rgba(106, 90, 205, 0.1);
+  --rose: #b8506b;
+  --gold: #c98a12;
+  --gold-soft: rgba(201, 138, 18, 0.14);
+  --ink: #18212f;
+  --success: #167a4a;
+  --danger: #b23b3b;
 
   --font-display: 'Space Grotesk Variable', 'Space Grotesk', system-ui, sans-serif;
   --font-body: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
 
   --container: 1200px;
-  --radius: 16px;
+  --radius: 14px;
   --radius-sm: 10px;
-  --header-height: 72px;
+  --header-height: 74px;
 
-  --shadow-lg: 0 28px 80px rgba(0, 0, 0, 0.45);
-  --shadow-md: 0 14px 40px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 30px 70px rgba(53, 45, 28, 0.16);
+  --shadow-md: 0 14px 34px rgba(53, 45, 28, 0.11);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -58,8 +61,8 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(1100px 560px at 78% -8%, rgba(255, 138, 61, 0.07), transparent 62%),
-    radial-gradient(900px 500px at 2% 8%, rgba(184, 243, 107, 0.035), transparent 55%),
+    radial-gradient(1100px 560px at 82% -10%, rgba(11, 107, 83, 0.07), transparent 62%),
+    radial-gradient(800px 460px at -5% 6%, rgba(201, 138, 18, 0.07), transparent 58%),
     var(--bg);
   color: var(--text);
   font-family: var(--font-body);
@@ -110,8 +113,8 @@ ol {
 }
 
 ::selection {
-  background: rgba(255, 138, 61, 0.3);
-  color: #fff;
+  background: rgba(11, 107, 83, 0.22);
+  color: var(--text);
 }
 
 :focus-visible {
@@ -131,12 +134,12 @@ pre::-webkit-scrollbar-track {
 pre::-webkit-scrollbar-thumb {
   border: 2px solid transparent;
   border-radius: 99px;
-  background: #2a3240;
+  background: #3a4557;
   background-clip: padding-box;
 }
 
 pre::-webkit-scrollbar-thumb:hover {
-  background: #3a4557;
+  background: #4d5a70;
   background-clip: padding-box;
 }
 
@@ -150,13 +153,13 @@ pre::-webkit-scrollbar-thumb:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2a3240;
+  background: #c8bda6;
   border: 3px solid var(--bg);
   border-radius: 99px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3a4557;
+  background: #b3a78e;
 }
 
 [hidden] {
@@ -189,7 +192,7 @@ pre::-webkit-scrollbar-thumb:hover {
   padding: 10px 16px;
   border-radius: 8px;
   background: var(--accent);
-  color: #160d05;
+  color: var(--surface);
   font-weight: 700;
   transform: translateY(-150%);
   transition: transform 0.2s;
@@ -234,20 +237,20 @@ pre::-webkit-scrollbar-thumb:hover {
 }
 
 .btn-primary {
-  background: linear-gradient(180deg, #ff9d53 0%, #ff7a1f 100%);
-  border-color: #ffb276;
-  color: #1a0d03;
+  background: var(--accent);
+  border-color: var(--accent-strong);
+  color: var(--surface);
   box-shadow:
-    0 10px 30px rgba(255, 122, 31, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    0 10px 24px rgba(11, 107, 83, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
+  background: var(--accent-strong);
   box-shadow:
-    0 14px 36px rgba(255, 122, 31, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  background: linear-gradient(180deg, #ffab68 0%, #ff842f 100%);
+    0 14px 30px rgba(11, 107, 83, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24);
 }
 
 .btn-primary:active {
@@ -255,25 +258,26 @@ pre::-webkit-scrollbar-thumb:hover {
 }
 
 .btn-secondary {
-  background: var(--surface-2);
+  background: var(--surface);
   border-color: var(--border-strong);
   color: var(--text);
+  box-shadow: 0 2px 0 rgba(53, 45, 28, 0.04);
 }
 
 .btn-secondary:hover {
-  background: var(--surface-3);
-  border-color: #435066;
+  background: var(--surface-2);
+  border-color: var(--accent-line);
 }
 
 .btn-ghost {
-  background: rgba(255, 255, 255, 0.02);
+  background: transparent;
   border-color: var(--border);
   color: var(--text-soft);
 }
 
 .btn-ghost:hover {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.045);
+  background: var(--surface);
   border-color: var(--border-strong);
 }
 
@@ -325,8 +329,8 @@ pre::-webkit-scrollbar-thumb:hover {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--lime);
-  box-shadow: 0 0 0 3px rgba(184, 243, 107, 0.14);
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
   flex: none;
 }
 
@@ -392,7 +396,7 @@ pre::-webkit-scrollbar-thumb:hover {
   position: sticky;
   top: 0;
   z-index: 90;
-  background: rgba(8, 10, 14, 0.68);
+  background: rgba(245, 241, 232, 0.82);
   border-bottom: 1px solid transparent;
   backdrop-filter: blur(18px) saturate(1.2);
   -webkit-backdrop-filter: blur(18px) saturate(1.2);
@@ -402,8 +406,9 @@ pre::-webkit-scrollbar-thumb:hover {
 }
 
 .site-header.is-scrolled {
-  background: rgba(8, 10, 14, 0.92);
+  background: #f5f1e8;
   border-bottom-color: var(--border);
+  box-shadow: 0 1px 0 rgba(53, 45, 28, 0.03);
 }
 
 .header-inner {
@@ -425,11 +430,13 @@ pre::-webkit-scrollbar-thumb:hover {
   place-items: center;
   width: 38px;
   height: 38px;
-  border: 1px solid #2c3544;
+  border: 1px solid var(--accent-strong);
   border-radius: 10px;
-  background: linear-gradient(160deg, #1a212b, #0e1218);
-  color: var(--lime);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  background: var(--accent);
+  color: var(--surface);
+  box-shadow:
+    0 4px 0 rgba(8, 84, 64, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
 }
 
 .slime-mark {
@@ -473,11 +480,11 @@ pre::-webkit-scrollbar-thumb:hover {
 
 .nav-link:hover {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--surface-2);
 }
 
 .nav-link.is-active {
-  color: var(--text);
+  color: var(--accent);
 }
 
 .nav-link.is-active::after {
@@ -506,7 +513,7 @@ pre::-webkit-scrollbar-thumb:hover {
   padding: 0 10px;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--surface);
   color: var(--muted);
   font-size: 0.8rem;
   transition:
@@ -518,7 +525,7 @@ pre::-webkit-scrollbar-thumb:hover {
 .search-trigger:hover {
   border-color: var(--border-strong);
   color: var(--text-soft);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--surface-2);
 }
 
 .search-trigger .icon {
@@ -559,7 +566,7 @@ pre::-webkit-scrollbar-thumb:hover {
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--lime), #d8ff9e);
+  background: linear-gradient(90deg, var(--accent), #47a98c);
   transition: width 0.4s var(--ease);
 }
 
@@ -789,8 +796,8 @@ pre::-webkit-scrollbar-thumb:hover {
   padding: 64px 0 26px;
   border-top: 1px solid var(--border);
   background:
-    radial-gradient(700px 300px at 15% 0%, rgba(255, 138, 61, 0.045), transparent 70%),
-    var(--bg-soft);
+    radial-gradient(700px 300px at 15% 0%, rgba(11, 107, 83, 0.06), transparent 70%),
+    var(--surface);
 }
 
 .footer-grid {
@@ -857,7 +864,7 @@ pre::-webkit-scrollbar-thumb:hover {
   gap: 24px;
   margin-top: 48px;
   padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.045);
+  border-top: 1px solid var(--border);
   color: var(--faint);
   font-size: 0.7rem;
   line-height: 1.6;
@@ -907,11 +914,12 @@ pre::-webkit-scrollbar-thumb:hover {
 
 .page-hero {
   position: relative;
-  padding: 64px 0 54px;
+  padding: 72px 0 58px;
   border-bottom: 1px solid var(--border);
   background:
-    radial-gradient(900px 380px at 18% 0%, rgba(255, 138, 61, 0.075), transparent 68%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.012), transparent);
+    radial-gradient(900px 400px at 16% -10%, rgba(11, 107, 83, 0.1), transparent 68%),
+    radial-gradient(600px 300px at 95% 0%, rgba(201, 138, 18, 0.09), transparent 70%),
+    linear-gradient(180deg, var(--surface), transparent);
   overflow: hidden;
 }
 
@@ -919,10 +927,10 @@ pre::-webkit-scrollbar-thumb:hover {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(26, 34, 48, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 34, 48, 0.045) 1px, transparent 1px);
   background-size: 56px 56px;
-  mask-image: radial-gradient(600px 300px at 20% 0%, #000, transparent 80%);
+  mask-image: radial-gradient(620px 320px at 18% 0%, #000, transparent 80%);
   pointer-events: none;
 }
 

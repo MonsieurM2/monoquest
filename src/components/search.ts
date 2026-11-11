@@ -1,4 +1,6 @@
 import { MODULES, lessons } from '../data';
+import { csharpBlocks } from '../data/csharp';
+import type { Block } from '../data/types';
 import { escapeHtml } from '../lib/dom';
 import { fixInternalUrls, navigate } from '../router';
 
@@ -8,6 +10,42 @@ interface SearchEntry {
   url: string;
   kind: string;
   meta: string;
+  body?: string;
+}
+
+function plain(html: string): string {
+  return html.replace(/<[^>]*>/g, ' ');
+}
+
+function blockText(blocks: Block[]): string {
+  return blocks
+    .map((block) => {
+      switch (block.t) {
+        case 'p':
+        case 'quote':
+          return plain(block.html);
+        case 'h2':
+        case 'h3':
+          return block.text;
+        case 'code':
+          return block.code;
+        case 'callout':
+          return `${block.title ?? ''} ${plain(block.html)}`;
+        case 'list':
+          return block.items.map(plain).join(' ');
+        case 'steps':
+          return block.items.map((item) => `${item.title} ${plain(item.html)}`).join(' ');
+        case 'table':
+          return [...block.head, ...block.rows.flat()].map(plain).join(' ');
+        case 'image':
+          return `${block.alt} ${block.caption ?? ''}`;
+        case 'gallery':
+          return block.items.map((item) => `${item.alt} ${item.caption ?? ''}`).join(' ');
+        default:
+          return '';
+      }
+    })
+    .join(' ');
 }
 
 const pages: SearchEntry[] = [
@@ -24,6 +62,7 @@ const pages: SearchEntry[] = [
     url: '/bases-csharp',
     kind: 'Guide',
     meta: 'Prérequis',
+    body: blockText(csharpBlocks),
   },
   {
     title: 'Quiz final',
@@ -48,6 +87,11 @@ const entries: SearchEntry[] = [
     url: `/cours/${lesson.slug}`,
     kind: 'Chapitre',
     meta: MODULES.find((module) => module.id === lesson.module)?.title ?? '',
+    body: [
+      blockText(lesson.blocks),
+      ...lesson.quiz.flatMap((question) => [question.question, question.explanation, ...question.options]),
+      ...lesson.exercises.flatMap((exercise) => [exercise.title, exercise.prompt, exercise.hint ?? '']),
+    ].join(' '),
   })),
   ...pages,
 ];
@@ -65,7 +109,9 @@ function search(query: string): SearchEntry[] {
 
   return entries
     .map((entry) => {
-      const haystack = normalize(`${entry.title} ${entry.description} ${entry.meta} ${entry.kind}`);
+      const haystack = normalize(
+        `${entry.title} ${entry.description} ${entry.meta} ${entry.kind} ${entry.body ?? ''}`,
+      );
       const title = normalize(entry.title);
       let score = 0;
       for (const term of terms) {

@@ -113,9 +113,9 @@ export function setupQuiz(root: ParentNode, questions: QuizQuestion[], id: strin
             const isSelected = !state.locked && index === state.selected;
             return `<button class="quiz-option${isSelected ? ' is-selected' : ''}${isCorrect ? ' is-correct' : ''}${
               isWrong ? ' is-wrong' : ''
-            }" type="button" data-quiz-option="${index}" aria-pressed="${isSelected}" ${
-              state.locked ? 'disabled' : ''
-            }>
+            }" type="button" data-quiz-option="${index}" aria-pressed="${isSelected}" aria-keyshortcuts="${
+              index + 1
+            }" ${state.locked ? 'disabled' : ''}>
               <span class="option-key">${letters[index] ?? index + 1}</span>
               <span class="option-text">${escapeHtml(option)}</span>
               <span class="option-mark" aria-hidden="true"></span>
@@ -150,6 +150,17 @@ export function setupQuiz(root: ParentNode, questions: QuizQuestion[], id: strin
       </div>
     </div>`;
   };
+
+  quiz.addEventListener('keydown', (event) => {
+    if (state.locked || state.finished) return;
+    const optionIndex = Number(event.key) - 1;
+    const question = questions[state.index];
+    if (!question || !Number.isInteger(optionIndex) || optionIndex < 0 || optionIndex >= question.options.length) return;
+    event.preventDefault();
+    state.selected = optionIndex;
+    renderQuestion();
+    quiz.querySelector<HTMLButtonElement>(`[data-quiz-option="${optionIndex}"]`)?.focus();
+  });
 
   content.addEventListener('click', (event) => {
     const target = event.target as Element;

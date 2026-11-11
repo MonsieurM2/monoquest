@@ -5,6 +5,7 @@ import '@fontsource/jetbrains-mono/500.css';
 import './styles/base.css';
 import './styles/pages.css';
 import './styles/lesson.css';
+import './styles/refresh.css';
 
 import { renderCourse, setupCourse } from './components/course';
 import { renderCsharp, setupCsharp } from './components/csharp';
